@@ -122,10 +122,11 @@ header {
 
   a {
     display: block;
+    width: max-content;
     @include adaptiveFormula(-webkit-text-stroke-width, .4, 2);
     color: rgba(0,0,0,0);
     -webkit-text-stroke-color: #fff;
-    transform: translateY(100%);
+    transform: translateY(110%);
   }
 
   span {

@@ -241,12 +241,15 @@ header {
 
 .header__menuItem a {
   display: block;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   -webkit-text-stroke-width: calc(0.4px + (2 - 0.4) * ((100vw - 320px) / (1920 - 320)));
   color: rgba(0, 0, 0, 0);
   -webkit-text-stroke-color: #fff;
-  -webkit-transform: translateY(100%);
-      -ms-transform: translateY(100%);
-          transform: translateY(100%);
+  -webkit-transform: translateY(110%);
+      -ms-transform: translateY(110%);
+          transform: translateY(110%);
 }
 
 .header__menuItem span {
@@ -348,3 +351,69 @@ header {
 }
 
 /* media */
+@media (max-width: 900px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header__leftMenu {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    padding-left: 40px;
+  }
+  .header__rightMenu {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 40px 0 0 40px;
+    position: relative;
+  }
+  .header__rightMenu:before {
+    content: '';
+    width: 90%;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  .header__contactsItem:first-of-type a {
+    font-size: calc(35px + (40 - 35) * ((100vw - 320px) / (900 - 320)));
+  }
+  .header__menuItem a {
+    font-size: calc(35px + (40 - 35) * ((100vw - 320px) / (900 - 320)));
+  }
+  .header__menuItem:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
+  .header__menu {
+    width: 100%;
+    z-index: 5;
+  }
+  .header__line, .header__circle, .header__hiddenCubes {
+    display: none;
+  }
+  .header__line:before, .header__line:after, .header__circle:before, .header__circle:after, .header__hiddenCubes:before, .header__hiddenCubes:after {
+    display: none;
+  }
+  .header__closeBtn {
+    width: 30px;
+    height: 30px;
+    top: 40px;
+    left: unset;
+    right: 20px;
+    z-index: 6;
+  }
+}

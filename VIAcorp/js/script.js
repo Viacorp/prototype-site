@@ -1,4 +1,5 @@
 /* header menu */
+const body = document.querySelector('body')
 const openMenuAnimation = gsap.timeline({paused: true})
 
 openMenuAnimation.to('header', {
@@ -51,10 +52,12 @@ openMenuAnimation.to('.header__contactsItem a', {
 
 
 document.getElementById('openMainMenu').addEventListener('click', () => {
+    body.style.overflow = 'hidden'
     openMenuAnimation.play()
 })
 
 document.getElementById('closeHeaderMenu').addEventListener('click', () => {
     openMenuAnimation.reverse()
+    body.style.overflow = 'auto'
 })
 
