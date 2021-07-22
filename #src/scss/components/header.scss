@@ -1,0 +1,209 @@
+@import "variables";
+
+header {
+  @include size(100vw, 100vh);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.header__menu {
+  @include size(50%, 100%);
+  @include flex(row, center, center, nowrap);
+  background: $black_3;
+  font-family: Himagsican, sans-serif;
+}
+
+.header__leftMenu {
+  transform: translateX(-100%);
+  @include adaptiveFormula(font-size, 30, 100);
+  text-transform: uppercase;
+}
+
+.header__rightMenu {
+  transform: translateX(100%);
+}
+
+.header__line {
+  display: block;
+  @include size(10px, 0);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+}
+
+.header__lineTop {
+  top: 0;
+}
+
+.header__lineBottom {
+  bottom: 0;
+}
+
+.header__hiddenCubes {
+  @include size(150px, 150px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: none;
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    @include size(calc(50% - 2.5px), 60%);
+    background: $black_3;
+    position: absolute;
+  }
+
+  &:after {
+    bottom: 0;
+    left: -3px;
+  }
+
+  &:before {
+    top: 0;
+    right: -3px;
+  }
+}
+
+.header__circle {
+  @include size(150px, 150px);
+  font-size: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(145deg);
+  display: none;
+
+  &:before, &:after {
+    content: "";
+    @include size(150px, 150px);
+    display: block;
+    position: absolute;
+    top: 0;
+    border: 10px solid transparent;
+    box-sizing: border-box;
+    border-radius: 50%;
+  }
+
+  &:after {
+    left: 0;
+    border-left-color: #fff;
+  }
+
+  &:before {
+    right: 0;
+    border-right-color: #fff;
+  }
+}
+
+.header__closeBtn {
+  @include size(80px, 80px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 3;
+  cursor: pointer;
+
+  &:hover {
+    filter: drop-shadow(2px 2px 5px #fff);
+  }
+}
+
+.header__menuItem {
+  overflow: hidden;
+
+  a {
+    display: block;
+    @include adaptiveFormula(-webkit-text-stroke-width, .4, 2);
+    color: rgba(0,0,0,0);
+    -webkit-text-stroke-color: #fff;
+    transform: translateY(100%);
+  }
+
+  span {
+    position: relative;
+    display: block;
+
+    &:before {
+      content: attr(data-text);
+      width: 0;
+      color: #ffffff;
+      overflow: hidden;
+      position: absolute;
+      transition: all 1s cubic-bezier(0.84, 0, 0.08, 0.99);
+    }
+
+    &:hover:before {
+      width: 100%;
+    }
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 30px;
+  }
+}
+
+.header__contactsItem {
+  overflow: hidden;
+
+  a {
+    display: block;
+    transform: translateY(100%);
+  }
+
+  &:first-of-type {
+    @include adaptiveFormula(font-size, 30, 100);
+    margin-bottom: 30px;
+
+    a {
+      @include adaptiveFormula(-webkit-text-stroke-width, .4, 2);
+      color: rgba(0,0,0,0);
+      -webkit-text-stroke-color: #fff;
+    }
+  }
+
+  &:not(:first-of-type) {
+    margin-bottom: 20px;
+    width: max-content;
+
+    a {
+      -webkit-text-stroke-width: 0;
+      color: #fff;
+      @include adaptiveFormula(font-size, 20, 30);
+    }
+  }
+
+  span {
+    display: block;
+    transition: color 0.4s ease-in-out;
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      @include size(100%, 1px);
+      background: #fff;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transition: transform 0.4s ease-out;
+      transform-origin: right;
+      transform: scaleX(0);
+    }
+
+    &:hover {
+      &:before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+}
