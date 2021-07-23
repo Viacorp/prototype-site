@@ -3,34 +3,31 @@
 @@include('system_folder/_preloader.html')
 
 <style>
-    .bumper {
-        width: 100%;
+    .section {
         height: 100vh;
-        background-color: #254;
+        flex-shrink: 0;
     }
 
-    .horizontal-section {
-        padding: 100px 0;
-        background-color: pink;
+    .wrapper {
+        display: flex;
+        flex-wrap: nowrap;
     }
 
-    .sticky-wrapper {
-        position: sticky;
-        top: 100px;
-        width: 100%;
-        overflow: hidden;
+    .section--large {
+        width: 100vw;
+        background-color: black;
+        color: white;
     }
 
-    .element-wrapper {
-        position: relative;
+    .section--dark {
+        width: auto;
+        color: white;
         display: flex;
     }
 
-    .element {
-        width: 500px;
-        height: 400px;
-        background-color: purple;
-        margin: 0 20px 0 0;
+    .abc {
+        width: 400px;
+        height: 100vh;
         flex-shrink: 0;
     }
 </style>
@@ -40,48 +37,68 @@
 <!--    <button id="openMainMenu" style="padding: 10px">КНОПКА ДЛЯ ОТКРЫТИЯ МЕНЮ!!! КЛАЦ КЛАЦ!!!</button>-->
 
 
-    <div class="bumper"></div>
+    <div class="wrapper d-flex flex-nowrap">
+        <section class="section section--large flex-shrink-0 vw-100 vh-100 d-flex justify-content-center align-items-center">
+            Part One
+        </section>
+        <section class="section section--dark section--small vh-100 flex-shrink-0 d-flex justify-content-center align-items-center">
+            <div class="abc" style="background: #72CD04">1</div>
+            <div class="abc" style="background: #4A4A4A">2</div>
+            <div class="abc" style="background: darkorchid">3</div>
+            <div class="abc" style="background: aquamarine">4</div>
+            <div class="abc" style="background: #e4002b">5</div>
+            <div class="abc" style="background: brown">6</div>
+            <div class="abc" style="background: #72CD04">7</div>
+        </section>
 
-    <div class="horizontal-section">
-        <div class="sticky-wrapper">
-            <div class="element-wrapper">
-                <div class="element"></div>
-                <div class="element"></div>
-                <div class="element"></div>
-                <div class="element"></div>
-                <div class="element"></div>
-                <div class="element"></div>
-                <div class="element"></div>
-                <div class="element"></div>
-            </div>
-        </div>
+        <section class="section section--large flex-shrink-0 vw-100 vh-100 d-flex justify-content-center align-items-center">
+            Part Four
+        </section>
     </div>
 
-    <div class="bumper"></div>
+
 
 
 </main>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
 <script>
+    const sections = gsap.utils.toArray("section");
+    let maxWidth = 0;
 
-    var windowWidth = window.innerWidth;
-    var horLength = document.querySelector(".element-wrapper").scrollWidth;
-    var distFromTop = document.querySelector(".horizontal-section").offsetTop;
-    var scrollDistance = distFromTop + horLength - windowWidth;
+    const getMaxWidth = () => {
+        maxWidth = 0;
+        sections.forEach((section) => {
+            maxWidth += section.offsetWidth;
+        });
+    };
+    getMaxWidth();
+    ScrollTrigger.addEventListener("refreshInit", getMaxWidth);
 
-    document.querySelector(".horizontal-section").style.height = horLength + "px";
-
-    window.onscroll = function(){
-        var scrollTop = window.pageYOffset;
-
-        if (scrollTop >= distFromTop && scrollTop <= scrollDistance) {
-            document.querySelector(".element-wrapper").style.transform = "translateX(-"+(scrollTop - distFromTop)+"px)";
+    gsap.to(sections, {
+        x: () => `-${maxWidth - window.innerWidth}`,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".wrapper",
+            pin: true,
+            scrub: 1,
+            end: () => `+=${maxWidth}`,
+            invalidateOnRefresh: true
         }
-    }
-
+    });
 </script>
 
 @@include('system_folder/_footer.html')
 @@include('system_folder/_scripts.html')
 
 
+<!-- сайты портфолио
+unarm.crthm.ru
+https://rukzak69.com/
+https://www.ghm-hmao.ru/
+http://fit-elit.ru/
+https://triumf62.ru/
+-----------
+http://viakont.ru/
+http://hyapro.ru/
+-->
