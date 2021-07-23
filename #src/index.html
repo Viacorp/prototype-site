@@ -1,10 +1,87 @@
 @@include('system_folder/_head.html')
 @@include('system_folder/_header.html')
 @@include('system_folder/_preloader.html')
-<main style="display: flex; justify-content: center; align-items: center; height: 100vh">
 
-    <button id="openMainMenu" style="padding: 10px">КНОПКА ДЛЯ ОТКРЫТИЯ МЕНЮ!!! КЛАЦ КЛАЦ!!!</button>
+<style>
+    .bumper {
+        width: 100%;
+        height: 100vh;
+        background-color: #254;
+    }
+
+    .horizontal-section {
+        padding: 100px 0;
+        background-color: pink;
+    }
+
+    .sticky-wrapper {
+        position: sticky;
+        top: 100px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .element-wrapper {
+        position: relative;
+        display: flex;
+    }
+
+    .element {
+        width: 500px;
+        height: 400px;
+        background-color: purple;
+        margin: 0 20px 0 0;
+        flex-shrink: 0;
+    }
+</style>
+
+<main>
+
+<!--    <button id="openMainMenu" style="padding: 10px">КНОПКА ДЛЯ ОТКРЫТИЯ МЕНЮ!!! КЛАЦ КЛАЦ!!!</button>-->
+
+
+    <div class="bumper"></div>
+
+    <div class="horizontal-section">
+        <div class="sticky-wrapper">
+            <div class="element-wrapper">
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bumper"></div>
+
 
 </main>
+
+<script>
+
+    var windowWidth = window.innerWidth;
+    var horLength = document.querySelector(".element-wrapper").scrollWidth;
+    var distFromTop = document.querySelector(".horizontal-section").offsetTop;
+    var scrollDistance = distFromTop + horLength - windowWidth;
+
+    document.querySelector(".horizontal-section").style.height = horLength + "px";
+
+    window.onscroll = function(){
+        var scrollTop = window.pageYOffset;
+
+        if (scrollTop >= distFromTop && scrollTop <= scrollDistance) {
+            document.querySelector(".element-wrapper").style.transform = "translateX(-"+(scrollTop - distFromTop)+"px)";
+        }
+    }
+
+</script>
+
 @@include('system_folder/_footer.html')
 @@include('system_folder/_scripts.html')
+
+
