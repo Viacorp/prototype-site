@@ -188,4 +188,56 @@
   position: relative;
   width: 300px;
   @include flex(column, center, center, nowrap);
+
+  div {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+
+    svg:last-of-type {
+      position: absolute;
+      bottom: -13px;
+      left: 50%;
+      transform: translateX(-60%);
+    }
+  }
+
+  a {
+    @include size(37px, 37px);
+    margin-bottom: 20px;
+    border-radius: 50%;
+
+    path {
+      stroke: #fff;
+      transition: .3s;
+    }
+
+    &:hover {
+      animation: portfolioPulse 2s infinite;
+
+      path {
+        stroke: $green_1;
+      }
+    }
+  }
+
+  p {font-size: 24px;}
+}
+
+@keyframes portfolioPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 $green_1;
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }

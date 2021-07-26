@@ -811,6 +811,95 @@ header {
       flex-wrap: nowrap;
 }
 
+.portfolio__itemCallback div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.portfolio__itemCallback div svg:last-of-type {
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  -webkit-transform: translateX(-60%);
+      -ms-transform: translateX(-60%);
+          transform: translateX(-60%);
+}
+
+.portfolio__itemCallback a {
+  width: 37px;
+  height: 37px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+}
+
+.portfolio__itemCallback a path {
+  stroke: #fff;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+}
+
+.portfolio__itemCallback a:hover {
+  -webkit-animation: portfolioPulse 2s infinite;
+          animation: portfolioPulse 2s infinite;
+}
+
+.portfolio__itemCallback a:hover path {
+  stroke: #72CD04;
+}
+
+.portfolio__itemCallback p {
+  font-size: 24px;
+}
+
+@-webkit-keyframes portfolioPulse {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-box-shadow: 0 0 0 0 #72CD04;
+            box-shadow: 0 0 0 0 #72CD04;
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes portfolioPulse {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-box-shadow: 0 0 0 0 #72CD04;
+            box-shadow: 0 0 0 0 #72CD04;
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
 /* about section in index page */
 .about {
   width: 100vw;
@@ -883,5 +972,81 @@ header {
     left: unset;
     right: 20px;
     z-index: 6;
+  }
+  .index__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .portfolio {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: auto;
+  }
+  .portfolio progress {
+    display: none;
+  }
+  .portfolio__item {
+    width: 100%;
+    height: 300px;
+  }
+  .portfolio__item img {
+    -o-object-position: center 20%;
+       object-position: center 20%;
+  }
+  .portfolio__itemInfo {
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    padding: 20px 10px;
+  }
+  .portfolio__itemInfo h2 {
+    font-size: 20px;
+  }
+  .portfolio__itemInfo h2 span {
+    font-size: 14px;
+  }
+  .portfolio__itemInfo p {
+    display: none;
+  }
+  .portfolio__itemInfo a {
+    opacity: 1;
+    font-size: 18px;
+  }
+  .portfolio__itemInfo a svg {
+    display: none;
+  }
+  .portfolio__itemTitle {
+    height: 100px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .portfolio__itemTitle h2 {
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+    margin-left: 0;
+    font-size: calc(40px + (70 - 40) * ((100vw - 320px) / (900 - 320)));
+  }
+  .portfolio__itemTitle a, .portfolio__itemTitle div {
+    display: none;
+  }
+  .portfolio__itemCallback {
+    background: #161616;
+    height: 220px;
+    padding-left: 20px;
+  }
+  .portfolio__itemCallback .menuBtn {
+    display: none;
   }
 }

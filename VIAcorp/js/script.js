@@ -67,6 +67,7 @@ document.getElementById('closeHeaderMenu').addEventListener('click', () => {
 
 /* index page */
 //horizontal scroll
+
 const indexSection = gsap.utils.toArray(".index__section");
 let maxWidth = 0;
 
@@ -79,20 +80,25 @@ const getMaxWidth = () => {
 getMaxWidth();
 ScrollTrigger.addEventListener("refreshInit", getMaxWidth);
 
-gsap.to(indexSection, {
-    x: () => `-${maxWidth - window.innerWidth}`,
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".index__container",
-        pin: true,
-        scrub: 1,
-        end: () => `+=${maxWidth}`,
-        invalidateOnRefresh: true
-    }
-});
+if (window.innerWidth > 900) {
+
+    gsap.to(indexSection, {
+        x: () => `-${maxWidth - window.innerWidth}`,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".index__container",
+            pin: true,
+            scrub: 1,
+            end: () => `+=${maxWidth}`,
+            invalidateOnRefresh: true
+        }
+    });
+
+}
 
 /* portfolio */
 // background animation
+
 const portfolioItems = gsap.utils.toArray(".portfolio__backgroundItem");
 
 let maxWidthPortfolio = 0;
@@ -106,21 +112,25 @@ const getMaxWidthPortfolio = () => {
 getMaxWidthPortfolio();
 ScrollTrigger.addEventListener("refreshInit", getMaxWidthPortfolio);
 
-gsap.to(portfolioItems, {
-    objectPosition: "100% 50%",
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".portfolio",
-        pin: true,
-        scrub: true,
-        end: () => `+=${maxWidth}`,
-        invalidateOnRefresh: true
-    }
-});
+if (window.innerWidth > 900) {
 
-gsap.to('progress', {
-    value: 100,
-    ease: 'none',
-    scrollTrigger: { scrub: 1 }
-});
+    gsap.to(portfolioItems, {
+        objectPosition: "100% 50%",
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".portfolio",
+            pin: true,
+            scrub: true,
+            end: () => `+=${maxWidth}`,
+            invalidateOnRefresh: true
+        }
+    });
+
+    gsap.to('progress', {
+        value: 100,
+        ease: 'none',
+        scrollTrigger: {scrub: 1}
+    });
+
+}
 

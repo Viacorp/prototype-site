@@ -1,4 +1,5 @@
 //horizontal scroll
+
 const indexSection = gsap.utils.toArray(".index__section");
 let maxWidth = 0;
 
@@ -11,14 +12,18 @@ const getMaxWidth = () => {
 getMaxWidth();
 ScrollTrigger.addEventListener("refreshInit", getMaxWidth);
 
-gsap.to(indexSection, {
-    x: () => `-${maxWidth - window.innerWidth}`,
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".index__container",
-        pin: true,
-        scrub: 1,
-        end: () => `+=${maxWidth}`,
-        invalidateOnRefresh: true
-    }
-});
+if (window.innerWidth > 900) {
+
+    gsap.to(indexSection, {
+        x: () => `-${maxWidth - window.innerWidth}`,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".index__container",
+            pin: true,
+            scrub: 1,
+            end: () => `+=${maxWidth}`,
+            invalidateOnRefresh: true
+        }
+    });
+
+}

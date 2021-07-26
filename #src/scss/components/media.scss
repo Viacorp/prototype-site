@@ -62,4 +62,68 @@
     right: 20px;
     z-index: 6;
   }
+
+  .index__container {
+    flex-direction: column;
+  }
+
+  .portfolio {
+    flex-direction: column;
+    height: auto;
+
+    progress {display: none}
+  }
+
+  .portfolio__item {
+    @include size(100%, 300px);
+
+    img {
+      object-position: center 20%;
+    }
+  }
+
+  .portfolio__itemInfo {
+    transform: none;
+    justify-content: flex-end;
+    padding: 20px 10px;
+
+    h2 {
+      font-size: 20px;
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    p {display: none}
+
+    a {
+      opacity: 1;
+      font-size: 18px;
+
+      svg {display: none}
+    }
+  }
+
+  .portfolio__itemTitle {
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      transform: none;
+      margin-left: 0;
+      font-size: calc(40px + (70 - 40) * ((100vw - 320px) / (900 - 320)));
+    }
+
+    a, div {display: none}
+  }
+
+  .portfolio__itemCallback {
+    background: $black_3;
+    height: 220px;
+    padding-left: 20px;
+
+    .menuBtn {display: none}
+  }
 }
