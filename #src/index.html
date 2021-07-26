@@ -1,93 +1,13 @@
 @@include('system_folder/_head.html')
 @@include('system_folder/_header.html')
 @@include('system_folder/_preloader.html')
-
-<style>
-    .section {
-        height: 100vh;
-        flex-shrink: 0;
-    }
-
-    .wrapper {
-        display: flex;
-        flex-wrap: nowrap;
-    }
-
-    .section--large {
-        width: 100vw;
-        background-color: black;
-        color: white;
-    }
-
-    .section--dark {
-        width: auto;
-        color: white;
-        display: flex;
-    }
-
-    .abc {
-        width: 400px;
-        height: 100vh;
-        flex-shrink: 0;
-    }
-</style>
-
 <main>
-
-<!--    <button id="openMainMenu" style="padding: 10px">КНОПКА ДЛЯ ОТКРЫТИЯ МЕНЮ!!! КЛАЦ КЛАЦ!!!</button>-->
-
-
-    <div class="wrapper d-flex flex-nowrap">
-        <section class="section section--large flex-shrink-0 vw-100 vh-100 d-flex justify-content-center align-items-center">
-            Part One
-        </section>
-        <section class="section section--dark section--small vh-100 flex-shrink-0 d-flex justify-content-center align-items-center">
-            <div class="abc" style="background: #72CD04">1</div>
-            <div class="abc" style="background: #4A4A4A">2</div>
-            <div class="abc" style="background: darkorchid">3</div>
-            <div class="abc" style="background: aquamarine">4</div>
-            <div class="abc" style="background: #e4002b">5</div>
-            <div class="abc" style="background: brown">6</div>
-            <div class="abc" style="background: #72CD04">7</div>
-        </section>
-
-        <section class="section section--large flex-shrink-0 vw-100 vh-100 d-flex justify-content-center align-items-center">
-            Part Four
-        </section>
+    <div class="index__container">
+        @@include('system_folder/index-pages/mainWindow.html')
+        @@include('system_folder/index-pages/portfolio.html')
+        @@include('system_folder/index-pages/about.html')
     </div>
-
-
-
-
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-<script>
-    const sections = gsap.utils.toArray("section");
-    let maxWidth = 0;
-
-    const getMaxWidth = () => {
-        maxWidth = 0;
-        sections.forEach((section) => {
-            maxWidth += section.offsetWidth;
-        });
-    };
-    getMaxWidth();
-    ScrollTrigger.addEventListener("refreshInit", getMaxWidth);
-
-    gsap.to(sections, {
-        x: () => `-${maxWidth - window.innerWidth}`,
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".wrapper",
-            pin: true,
-            scrub: 1,
-            end: () => `+=${maxWidth}`,
-            invalidateOnRefresh: true
-        }
-    });
-</script>
-
 @@include('system_folder/_footer.html')
 @@include('system_folder/_scripts.html')
 

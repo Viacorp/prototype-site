@@ -25,6 +25,7 @@ header {
 
 .header__rightMenu {
   transform: translateX(100%);
+  position: relative;
 }
 
 .header__line {
@@ -206,5 +207,18 @@ header {
         transform-origin: left;
       }
     }
+  }
+}
+
+.header__backImage {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  transform: scaleX(-1);
+  z-index: -1;
+  opacity: .1;
+
+  path {
+    stroke: $green_1;
   }
 }

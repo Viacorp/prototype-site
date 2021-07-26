@@ -1,0 +1,66 @@
+@import "variables";
+
+.index__container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.index__section {
+  height: 100vh;
+  flex: 0 0 auto;
+}
+
+.index__mainWindow {
+  width: 100vw;
+  background: $backgroundSite;
+}
+
+.index__pagination {
+  @include size(180px, auto);
+  @include flex(row, space-between, center, nowrap);
+  filter: grayscale(0%) !important;
+}
+
+.index__paginationArrow {
+  &.index__paginationArrowNotActive {
+    path {
+      stroke: $black_1;
+    }
+  }
+
+  path {
+    stroke: #fff;
+    transition: .3s;
+  }
+
+  &:hover {
+    &.index__paginationArrowNotActive {
+      path {
+        stroke: $black_1;
+      }
+    }
+
+    path {
+      stroke: $green_1;
+    }
+  }
+}
+
+.index__paginationCircle {
+  &.index__paginationCircleActive {
+    path {
+      stroke: $green_1;
+    }
+  }
+
+  path {
+    stroke: $black_1;
+    transition: .3s;
+  }
+
+  &:hover {
+    path {
+      stroke: $green_1;
+    }
+  }
+}

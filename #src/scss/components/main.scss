@@ -1,0 +1,35 @@
+@import "variables";
+
+main {
+  color: #fff;
+  font-family: SourceSansPro ,sans-serif;
+}
+
+.menuBtn {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+
+  path {
+    transition: .3s;
+  }
+
+  path:not(:last-of-type) {
+    stroke: #fff;
+  }
+
+  path:last-of-type {
+    fill: #fff;
+  }
+
+  &:hover {
+    path:not(:last-of-type) {
+      stroke: $green_1;
+    }
+
+    path:last-of-type {
+      fill: $green_1;
+    }
+  }
+}

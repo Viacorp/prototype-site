@@ -1,4 +1,5 @@
 const body = document.querySelector('body')
+
 const openMenuAnimation = gsap.timeline({paused: true})
 
 openMenuAnimation.to('header', {
@@ -49,11 +50,14 @@ openMenuAnimation.to('.header__contactsItem a', {
     translateY: 0,
 })
 
+const openMainMenu = document.querySelectorAll('.openMainMenu')
 
-document.getElementById('openMainMenu').addEventListener('click', () => {
-    body.style.overflow = 'hidden'
-    openMenuAnimation.play()
-})
+for (openMenu of openMainMenu) {
+    openMenu.addEventListener('click', () => {
+        body.style.overflow = 'hidden'
+        openMenuAnimation.play()
+    })
+}
 
 document.getElementById('closeHeaderMenu').addEventListener('click', () => {
     openMenuAnimation.reverse()
