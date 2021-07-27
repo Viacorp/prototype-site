@@ -10,11 +10,6 @@
   flex: 0 0 auto;
 }
 
-.index__mainWindow {
-  width: 100vw;
-  background: $backgroundSite;
-}
-
 .index__pagination {
   @include size(180px, auto);
   @include flex(row, space-between, center, nowrap);

@@ -101,12 +101,13 @@
     }
 
     svg {
+      @include size(20px, 50px);
       stroke: $green_2;
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-30%) translateX(15px);
       transition: .5s;
+      transform: translateX(-50%) rotate(90deg);
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
 
       &:nth-of-type(2) {
         animation: 1s linear 1s infinite alternate linkArrow2;
@@ -118,13 +119,17 @@
     }
   }
 
-  div {
+  .portfolio__itemInfoLinkTitle {
     flex: 0 0 auto;
     @include size(100%, 50%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     margin-bottom: 30px;
+    opacity: 1;
+    position: unset;
+    transform: none;
+    color: #fff;
   }
 
   img {
@@ -144,13 +149,13 @@
 }
 
 @keyframes linkArrow2 {
-  0% {transform: translateY(-30%) translateX(15px);}
-  100% {transform: translateY(-30%) translateX(22px);}
+  0% {transform: translateX(-50%) translateY(0) rotate(90deg);}
+  100% {transform: translateX(-50%) translateY(8px) rotate(90deg);}
 }
 
 @keyframes linkArrow3 {
-  0% {transform: translateY(-30%) translateX(15px);}
-  100% {transform: translateY(-30%) translateX(29px);}
+  0% {transform: translateX(-50%) translateY(0) rotate(90deg);}
+  100% {transform: translateX(-50%) translateY(16px) rotate(90deg);}
 }
 
 .portfolio__itemTitle {

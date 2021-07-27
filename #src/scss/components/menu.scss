@@ -1,0 +1,103 @@
+@import "variables";
+
+.menuBtn.openMainMenu {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  line-height: 15px;
+  height: 20px;
+  display: flex;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  text-transform: uppercase;
+  filter: none;
+  z-index: 40;
+  transition: .5s;
+
+  &:hover {
+    color: $black_1;
+
+    .menuBtn__span {
+      &:before {
+        background: $black_1;
+      }
+
+      span:nth-child(1) {
+        width: 100%;
+        background: $black_1;
+        animation: none;
+      }
+
+      span:nth-child(2) {
+        width: 100%;
+        background: $black_1;
+        animation: none;
+      }
+
+      span:nth-child(3) {
+        width: 100%;
+        background: $black_1;
+        animation: none;
+      }
+    }
+  }
+}
+
+.menuBtn__span {
+  @include flex(column, space-between, flex-start, nowrap);
+  @include size(15px, 15px);
+  position: relative;
+  margin: 0 2px;
+
+
+  &:before {
+    content: '';
+    @include size(3.5px, 13px);
+    background: $green_1;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: .5s;
+  }
+
+  span:nth-child(1) {
+    @include size(20%, 2.5px);
+    background: $green_1;
+    animation: menuSpan-1 1s infinite alternate;
+    animation-delay: 0s;
+    transition: .5s;
+  }
+
+  span:nth-child(2) {
+    @include size(20%, 2.5px);
+    background: $green_1;
+    animation: menuSpan-2 1s infinite alternate;
+    animation-delay: .1s;
+    transition: .5s;
+  }
+
+  span:nth-child(3) {
+    @include size(20%, 2.5px);
+    background: $green_1;
+    animation: menuSpan-3 1s infinite alternate;
+    animation-delay: .2s;
+    transition: .5s;
+  }
+}
+
+@keyframes menuSpan-1 {
+  0% {width: 20%}
+  100% {width: 100%}
+}
+
+@keyframes menuSpan-2 {
+  0% {width: 20%}
+  100% {width: 100%}
+}
+
+@keyframes menuSpan-3 {
+  0% {width: 20%}
+  100% {width: 100%}
+}

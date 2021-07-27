@@ -1,0 +1,11 @@
+@import "variables";
+
+.index__mainWindow {
+  width: 100vw;
+  background: $backgroundSite;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

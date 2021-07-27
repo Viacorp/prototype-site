@@ -2,34 +2,39 @@
 
 main {
   color: #fff;
-  font-family: SourceSansPro ,sans-serif;
+  font-family: SourceSansPro, sans-serif;
 }
 
-.menuBtn {
+input {
+  caret-color: $green_1;
+}
+
+.topLogo {
   position: absolute;
-  top: 50px;
-  right: 50px;
-  cursor: pointer;
+  top: 30px;
+  left: 30px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
 
-  path {
-    transition: .3s;
-  }
+  p {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: MontserratLogo, sans-serif;
+    margin-left: 10px;
+    color: #fff;
 
-  path:not(:last-of-type) {
-    stroke: #fff;
-  }
-
-  path:last-of-type {
-    fill: #fff;
-  }
-
-  &:hover {
-    path:not(:last-of-type) {
-      stroke: $green_1;
+    &:before {
+      content: attr(data-text);
+      width: 0;
+      color: $green_2;
+      overflow: hidden;
+      position: absolute;
+      transition: all .5s linear;
     }
 
-    path:last-of-type {
-      fill: $green_1;
+    &:hover:before {
+      width: 100%;
     }
   }
 }

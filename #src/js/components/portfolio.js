@@ -13,24 +13,27 @@ const getMaxWidthPortfolio = () => {
 getMaxWidthPortfolio();
 ScrollTrigger.addEventListener("refreshInit", getMaxWidthPortfolio);
 
-if (window.innerWidth > 900) {
+if (document.querySelector('.portfolio__backgroundItem')) {
 
-    gsap.to(portfolioItems, {
-        objectPosition: "100% 50%",
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".portfolio",
-            pin: true,
-            scrub: true,
-            end: () => `+=${maxWidth}`,
-            invalidateOnRefresh: true
-        }
-    });
+    if (window.innerWidth > 900) {
 
-    gsap.to('progress', {
-        value: 100,
-        ease: 'none',
-        scrollTrigger: {scrub: 1}
-    });
+        gsap.to(portfolioItems, {
+            objectPosition: "100% 50%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".portfolio",
+                pin: true,
+                scrub: true,
+                end: () => `+=${maxWidth}`,
+                invalidateOnRefresh: true
+            }
+        });
+
+        gsap.to('progress', {
+            value: 100,
+            ease: 'none',
+            scrollTrigger: {scrub: 1}
+        });
+    }
 
 }

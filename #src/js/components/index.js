@@ -12,18 +12,21 @@ const getMaxWidth = () => {
 getMaxWidth();
 ScrollTrigger.addEventListener("refreshInit", getMaxWidth);
 
-if (window.innerWidth > 900) {
+if (document.querySelector('.index__section')) {
 
-    gsap.to(indexSection, {
-        x: () => `-${maxWidth - window.innerWidth}`,
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".index__container",
-            pin: true,
-            scrub: 1,
-            end: () => `+=${maxWidth}`,
-            invalidateOnRefresh: true
-        }
-    });
+    if (window.innerWidth > 900) {
+
+        gsap.to(indexSection, {
+            x: () => `-${maxWidth - window.innerWidth}`,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".index__container",
+                pin: true,
+                scrub: 1,
+                end: () => `+=${maxWidth}`,
+                invalidateOnRefresh: true
+            }
+        });
+    }
 
 }
