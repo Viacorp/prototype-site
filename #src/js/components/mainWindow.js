@@ -1,3 +1,5 @@
+if(document.getElementById('mainIndexWindow')) {
+
 // milky way
 gsap.to('.mainWindow__milkyWaySvg', 40, {
     rotate: 360,
@@ -103,3 +105,4 @@ indexMainWindowMainAnimation.to('.welcomeTitleLetter', 3, {
     stagger: .4,
 })
 
+}
