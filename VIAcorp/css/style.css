@@ -91,14 +91,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* fonts site */
 @font-face {
-  font-family: Himagsican;
-  font-display: swap;
-  src: url("../fonts/himagsikan.woff") format("woff"), url("../fonts/himagsikan.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: Montserrat;
   font-display: swap;
   src: url("../fonts/Montserrat-SemiBold.woff") format("woff"), url("../fonts/Montserrat-SemiBold.woff2") format("woff2");
@@ -397,7 +389,7 @@ header {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   background: #161616;
-  font-family: Himagsican, sans-serif;
+  font-family: MontserratBold, sans-serif;
 }
 
 .header__leftMenu {
@@ -405,6 +397,7 @@ header {
       -ms-transform: translateX(-100%);
           transform: translateX(-100%);
   font-size: calc(30px + (100 - 30) * ((100vw - 320px) / (1920 - 320)));
+  line-height: calc(30px + (100 - 30) * ((100vw - 320px) / (1920 - 320)));
   text-transform: uppercase;
 }
 
@@ -585,6 +578,7 @@ header {
 }
 
 .header__contactsItem:not(:first-of-type) {
+  font-family: MontserratLogo, sans-serif;
   margin-bottom: 20px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -729,6 +723,7 @@ header {
   background: -o-linear-gradient(158.72deg, #161616 29.94%, #242325 81.4%);
   background: linear-gradient(291.28deg, #161616 29.94%, #242325 81.4%);
   position: relative;
+  overflow: hidden;
 }
 
 .index__mainWindow .index__pagination {
@@ -799,6 +794,25 @@ header {
           order: 3;
 }
 
+.mainWindow__smallTitle .creativeTitleLetter, .mainWindow__smallTitle .studioTitleLetter, .mainWindow__smallTitle .sloganTitleLetter {
+  opacity: 0;
+}
+
+.mainWindow__topLeavesBox {
+  width: 710px;
+  position: absolute;
+  top: 0;
+  left: 20%;
+}
+
+.mainWindow__bottomLeavesBox {
+  width: 710px;
+  position: absolute;
+  bottom: 0;
+  right: calc(-90px + (130 - -90) * ((100vw - 900px) / (1920 - 900)));
+  z-index: 7;
+}
+
 /* main window SVG */
 .mainWindow__milkyWaySvg {
   width: 700px;
@@ -810,6 +824,149 @@ header {
       -ms-transform: translate(50%, -50%);
           transform: translate(50%, -50%);
   z-index: 5;
+}
+
+.mainWindow__islandSvg {
+  width: 100%;
+  position: absolute;
+  bottom: calc(-120px + (0 - -120) * ((100vw - 900px) / (1920 - 900)));
+  right: calc(-200px + (-250 - -200) * ((100vw - 900px) / (1920 - 900)));
+  z-index: 3;
+}
+
+.mainWindow__circleArraySvg {
+  position: absolute;
+  left: calc(10px + (490 - 10) * ((100vw - 900px) / (1920 - 900)));
+  bottom: calc(80px + (160 - 80) * ((100vw - 900px) / (1920 - 900)));
+}
+
+.mainWindow__topLeaves {
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.mainWindow__topLeaves-1 {
+  left: 0;
+}
+
+.mainWindow__topLeaves-2 {
+  left: 90px;
+}
+
+.mainWindow__topLeaves-3 {
+  left: 159px;
+}
+
+.mainWindow__topLeaves-4 {
+  left: 250px;
+}
+
+.mainWindow__topLeaves-5 {
+  right: 150px;
+  top: -10px;
+}
+
+.mainWindow__topLeaves-6 {
+  right: 0;
+}
+
+.mainWindow__palmSvg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+  -webkit-transform-origin: right bottom;
+      -ms-transform-origin: right bottom;
+          transform-origin: right bottom;
+  -webkit-transform: rotate(50deg) translateX(30%);
+      -ms-transform: rotate(50deg) translateX(30%);
+          transform: rotate(50deg) translateX(30%);
+}
+
+.mainWindow__bottomLeaves {
+  position: absolute;
+  bottom: 0;
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.mainWindow__bottomLeaves-1 {
+  left: 0;
+  -webkit-transform-origin: right bottom;
+      -ms-transform-origin: right bottom;
+          transform-origin: right bottom;
+  -webkit-transform: rotate(-60deg);
+      -ms-transform: rotate(-60deg);
+          transform: rotate(-60deg);
+}
+
+.mainWindow__bottomLeaves-2 {
+  left: 120px;
+  -webkit-transform-origin: right bottom;
+      -ms-transform-origin: right bottom;
+          transform-origin: right bottom;
+  -webkit-transform: rotate(-80deg);
+      -ms-transform: rotate(-80deg);
+          transform: rotate(-80deg);
+}
+
+.mainWindow__bottomLeaves-3 {
+  right: 0;
+  bottom: -30px;
+  -webkit-transform-origin: left bottom;
+      -ms-transform-origin: left bottom;
+          transform-origin: left bottom;
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.mainWindow__bottomLeaves-4 {
+  left: 250px;
+  z-index: 8;
+}
+
+.mainWindow__bottomLeaves-5 {
+  left: 200px;
+  z-index: 5;
+}
+
+.mainWindow__bottomLeaves-6 {
+  left: 390px;
+  z-index: 8;
+}
+
+.mainWindow__bottomLeaves-7 {
+  left: 320px;
+  z-index: 7;
+}
+
+.mainWindow__bottomLeaves-8 {
+  left: 330px;
+  z-index: 5;
+}
+
+.mainWindow__bottomLeaves-9 {
+  left: 350px;
+  z-index: 5;
+}
+
+.mainWindow__giraffe {
+  height: calc(400px + (840 - 400) * ((100vw - 900px) / (1920 - 900)));
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform-origin: center bottom;
+      -ms-transform-origin: center bottom;
+          transform-origin: center bottom;
+  -webkit-transform: translateX(-50%) translateY(100%) rotate(-70deg);
+      -ms-transform: translateX(-50%) translateY(100%) rotate(-70deg);
+          transform: translateX(-50%) translateY(100%) rotate(-70deg);
+  z-index: 6;
 }
 
 /* portfolio section in index page */
@@ -1838,7 +1995,9 @@ header {
     content: '';
     width: 90%;
     height: 2px;
-    background: #fff;
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(#4A4A4A), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0), #4A4A4A, rgba(0, 0, 0, 0));
+    background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), #4A4A4A, rgba(0, 0, 0, 0));
     position: absolute;
     top: 20px;
     left: 50%;

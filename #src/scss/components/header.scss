@@ -14,12 +14,13 @@ header {
   @include size(50%, 100%);
   @include flex(row, center, center, nowrap);
   background: $black_3;
-  font-family: Himagsican, sans-serif;
+  font-family: MontserratBold, sans-serif;
 }
 
 .header__leftMenu {
   transform: translateX(-100%);
   @include adaptiveFormula(font-size, 30, 100);
+  @include adaptiveFormula(line-height, 30, 100);
   text-transform: uppercase;
 }
 
@@ -173,6 +174,7 @@ header {
   }
 
   &:not(:first-of-type) {
+    font-family: MontserratLogo, sans-serif;
     margin-bottom: 20px;
     width: max-content;
 

@@ -20,7 +20,7 @@
     &:before {
       content: '';
       @include size(90%, 2px);
-      background: #fff;
+      background: linear-gradient(0.25turn, rgba(0,0,0,0), $black_1, rgba(0,0,0,0));
       position: absolute;
       top: 20px;
       left: 50%;
