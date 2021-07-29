@@ -8,7 +8,7 @@ if (document.querySelector('.callbackArrow')) {
 
     callbackAnimationArrow.to('.callbackArrow', 1.5, {
         strokeDasharray: '860px',
-        x: -5
+        x: -10
     })
 
     callbackAnimationArrow.to('.callbackArrow', 1.5, {

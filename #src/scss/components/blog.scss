@@ -1,0 +1,11 @@
+@import "variables";
+
+.blog {
+  @include size(100vw, 100vh);
+  @include flex(row, center, center, nowrap);
+  background: $backgroundSite;
+
+  h1 {
+    @include adaptiveFormula(font-size, 25, 50)
+  }
+}

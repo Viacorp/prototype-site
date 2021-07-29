@@ -1,3 +1,5 @@
+@import "variables";
+
 @media (max-width: 900px) {
   header {
     flex-direction: column;
@@ -126,4 +128,85 @@
 
     .menuBtn {display: none}
   }
+
+  .about {
+    flex-direction: column-reverse;
+    height: auto;
+
+    .menuBtn, .topLogo, .index__pagination {
+      display: none;
+    }
+  }
+
+  .about__team {
+    padding-top: 20px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      @include size(95%, 1px);
+      background: linear-gradient(0.25turn, rgba(0,0,0,0), $black_1, rgba(0,0,0,0));
+    }
+
+    h2 {
+      text-align: center;
+    }
+  }
+
+  .about__teamItems {
+    flex-wrap: wrap;
+  }
+
+  .about__teamItem {
+    @include size(190px, 240px);
+    margin: 50px 10px 0;
+
+    &:hover {
+      background-size: 380px;
+    }
+  }
+
+  .about__teamItem-1, .about__teamItem-2, .about__teamItem-3 {
+   background-size: 190px;
+  }
+
+  .about__start {
+    width: 100%;
+    height: auto;
+    position: unset;
+    display: flex;
+    align-items: center;
+    padding: 20px 10px;
+    border: none;
+
+    p:first-of-type {margin-top: 0}
+  }
+
+  .about__startBird {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+
+  .about__startBackground {
+    @include size(95%, 90%);
+    top: unset;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .callback .topLogo {display: none}
+
+  .callback__numberPage {
+    left: 10px;
+    bottom: unset;
+    top: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about__startBackground {display: none;}
 }

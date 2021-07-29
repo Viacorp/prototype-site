@@ -3,4 +3,161 @@
 .about {
   width: 100vw;
   background: $backgroundSite;
+  position: relative;
+  display: flex;
+
+  .topLogo, .about__startBird, .about__start p, .index__pagination {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+
+
+}
+
+.about__start {
+  flex: 0 0 auto;
+  @include adaptiveFormula(width, 100, 500);
+  height: 100%;
+  border-right: 1px solid $black_1;
+  position: relative;
+  padding-bottom: 10px;
+  padding-top: calc(100px + (300 - 100) * ((100vw - 900px) / (1920 - 900)));
+  padding-left: calc(20px + (100 - 20) * ((100vw - 900px) / (1920 - 900)));
+  padding-right: calc(20px + (100 - 20) * ((100vw - 900px) / (1920 - 900)));
+
+  p {
+    margin-top: 15px;
+  }
+
+  .index__pagination {
+    position: absolute;
+    left: 30px;
+    bottom: 60px;
+  }
+}
+
+.about__startBird {
+  width: calc(100px + (200 - 100) * ((100vw - 900px) / (1920 - 900)));
+  height: calc(108px + (216 - 108) * ((100vw - 900px) / (1920 - 900)));
+}
+
+.about__startBackground {
+  position: absolute;
+  left: 0;
+  @include adaptiveFormula(top, 0, 150);
+  @include adaptiveFormula(width, 50, 450);
+  height: auto;
+}
+
+.about__team {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: calc(10px + (150 - 10) * ((100vw - 900px) / (1920 - 900)));
+  padding-right: calc(10px + (150 - 10) * ((100vw - 900px) / (1920 - 900)));
+
+
+  h2 {
+    @include adaptiveFormula(font-size, 50, 80);
+
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+.about__teamBackground {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.about__teamItems {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+  p {
+    color: $green_1;
+  }
+
+  h3, p {
+    opacity: 0;
+    transition: 1s;
+  }
+}
+
+.about__teamItemBorder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include size(95%, 97%);
+  border-radius: 10px;
+  position: relative;
+  padding: 10px;
+
+  &:hover {
+    border: 1px solid #fff;
+  }
+}
+
+.about__teamItem {
+  @include flex(row, center, center, nowrap);
+  width: calc(190px + (330 - 190) * ((100vw - 900px) / (1920 - 900)));
+  height: calc(240px + (400 - 240) * ((100vw - 900px) / (1920 - 900)));
+  border-radius: 10px;
+  transition: background 0.8s;
+  overflow: hidden;
+  box-shadow: 0 70px 63px -60px $green_2;
+  position: relative;
+  margin-top: 50px;
+
+  transform: translateY(-30px);
+  opacity: 0;
+
+  &:hover {
+    background-position: left center;
+    background-size: calc(380px + (660 - 380) * ((100vw - 900px) / (1920 - 900)));
+
+    h3, p {
+      opacity: 1;
+    }
+  }
+}
+
+.about__teamItem-1 {
+  background: url("https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg") no-repeat center center;
+  background-size: calc(190px + (330 - 190) * ((100vw - 900px) / (1920 - 900)));
+}
+
+.about__teamItem-2 {
+  background: url("https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg") center center no-repeat;
+  background-size: calc(190px + (330 - 190) * ((100vw - 900px) / (1920 - 900)));
+}
+
+.about__teamItem-3 {
+  background: url("https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg") center center no-repeat;
+  background-size: calc(190px + (330 - 190) * ((100vw - 900px) / (1920 - 900)));
+}
+
+.about__teamCallback {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
+  padding: 0 20px;
+
+  transform: translateY(-30px);
+  opacity: 0;
+
+  a {
+    color: $green_1;
+    transition: .3s;
+
+    &:hover {
+      color: $black_1;
+    }
+  }
 }

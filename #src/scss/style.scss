@@ -1,5 +1,7 @@
 /* zero style */
 @import 'components/zeroStyle';
+/* scroll style */
+@import 'components/scroll';
 /* fonts site */
 @import 'components/fonts';
 /* main style */
@@ -18,7 +20,10 @@
 @import 'components/about';
 /* callback page */
 @import 'components/callbackPage';
-
+/* blog page */
+@import 'components/blog';
+/* contacts page */
+@import 'components/contacts';
 
 
 

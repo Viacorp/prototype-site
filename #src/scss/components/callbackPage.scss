@@ -85,8 +85,8 @@
 }
 
 .callback__notInput {
+  @include adaptiveFormula(font-size, 15, 24);
   color: $green_1;
-  font-size: 24px;
   opacity: 0;
   visibility: hidden;
 }
@@ -102,24 +102,25 @@
   left: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  text-align: center;
 
   border: 2px solid $green_1;
   opacity: 0;
   visibility: hidden;
 
   h2 {
-    font-size: 50px;
-    margin-bottom: 100px;
+    @include adaptiveFormula(font-size, 24, 50);
+    @include adaptiveFormula(margin-bottom, 60, 100);
 
     opacity: 0;
   }
 
   input {
     @include size(70%, auto);
+    @include adaptiveFormula(font-size, 18, 30);
     background: none;
     border: none;
     color: #fff;
-    font-size: 30px;
     border-bottom: 2px solid $black_1;
     padding: 5px;
     text-align: center;
@@ -153,7 +154,8 @@
 }
 
 .callback__circle {
-  @include size(40%, auto);
+  @include adaptiveFormula(width, 290, 600);
+  height: auto;
   display: flex;
   justify-content: space-between;
   margin-top: -50px;
@@ -173,7 +175,8 @@
   }
 
   label {
-    @include size(100px, 100px);
+    @include adaptiveFormula(width, 55, 100);
+    @include adaptiveFormula(height, 55, 100);
     @include flex(row, center, center, nowrap);
     border-radius: 50%;
     background: $black_2;
@@ -190,7 +193,7 @@
   }
 
   svg {
-    height: 50px!important;
+    height: calc(25px + (50 - 25) * ((100vw - 320px) / (1920 - 320)))!important;
     margin-left: 0!important;
     fill: #fff;
     transition: .5s;
@@ -199,7 +202,7 @@
 
 .callback__phone {
   input[type="text"] {
-    margin-top: 50px;
+    @include adaptiveFormula(margin-top, 25, 50);
     width: 0;
     opacity: 0;
     padding: 0;
@@ -219,7 +222,7 @@
 
 .callback__complete {
   p {
-    font-size: 30px;
+    @include adaptiveFormula(font-size, 15, 30);
   }
 }
 
