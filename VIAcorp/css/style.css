@@ -1959,9 +1959,7 @@ header {
   line-height: 50px;
   text-align: center;
   text-transform: uppercase;
-  -webkit-text-stroke-width: .2px;
-  color: rgba(0, 0, 0, 0);
-  -webkit-text-stroke-color: #fff;
+  color: rgba(255, 255, 255, 0.1);
 }
 
 /* media */
