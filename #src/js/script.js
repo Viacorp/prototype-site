@@ -2,6 +2,8 @@
 @@include('components/headerMenu.js')
 /* index page */
 @@include('components/index.js')
+/* pagination index page */
+@@include('components/paginationIndexPage.js')
 /* main window */
 @@include('components/mainWindow.js')
 /* about */

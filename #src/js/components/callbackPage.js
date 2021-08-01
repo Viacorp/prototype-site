@@ -1,24 +1,3 @@
-// callback arrow
-
-if (document.querySelector('.callbackArrow')) {
-
-    const callbackAnimationArrow = gsap.timeline({
-        repeat: -1
-    })
-
-    callbackAnimationArrow.to('.callbackArrow', 1.5, {
-        strokeDasharray: '860px',
-        x: -10
-    })
-
-    callbackAnimationArrow.to('.callbackArrow', 1.5, {
-        delay: .5,
-        strokeDasharray: '430px',
-        x: 0
-    })
-
-}
-
 // callback form window
 if (document.querySelector('.callback')) {
 
@@ -38,83 +17,11 @@ if (document.querySelector('.callback')) {
         opacity: 1
     })
 
-
-    const openCallbackWindowAnimation = (nameTimeline, classActive) => {
-        nameTimeline.to(classActive, .3, {
-            visibility: 'visible'
-        })
-
-        nameTimeline.to(classActive, 1, {
-            opacity: 1,
-            width: '10%'
-        })
-
-        nameTimeline.to(classActive, 1, {
-            width: '100%',
-            height: '100%',
-            padding: '200px 10px 10px'
-        })
-
-        nameTimeline.to(`${classActive} h2`, .3, {
-            opacity: 1
-        }, '-=.6')
-
-        nameTimeline.to(`${classActive} input`, .3, {
-            opacity: 1
-        }, '-=.6')
-
-        nameTimeline.to(`${classActive} .callback__nextStep`, .3, {
-            opacity: 1
-        }, '-=.6')
-
-        nameTimeline.to(`${classActive} .callback__numberPage`, .3, {
-            opacity: 1
-        }, '-=.6')
-
-        nameTimeline.to(classActive, 1, {
-            border: 'none'
+    const closeCallbackWindow = (element) => {
+        gsap.to(element, .5, {
+            transform: 'translateX(100%)'
         })
     }
-    const closeCallbackWindowAnimation = (nameTimeline, classActive) => {
-        nameTimeline.to(classActive, .3, {
-            border: '2px solid #72CD04',
-        })
-
-        nameTimeline.to(classActive, 1, {
-            width: '10%',
-            height: 0,
-            padding: 0
-        })
-
-        nameTimeline.to(`${classActive} h2`, .3, {
-            opacity: 0
-        }, '-=1.1')
-
-        nameTimeline.to(`${classActive} input`, .3, {
-            opacity: 0
-        }, '-=1.1')
-
-        nameTimeline.to(`${classActive} .callback__nextStep`, .3, {
-            opacity: 0
-        }, '-=1.1')
-
-        nameTimeline.to(`${classActive} .callback__numberPage`, .3, {
-            opacity: 0
-        }, '-=1.1')
-
-        nameTimeline.to(classActive, 1, {
-            opacity: 0,
-            width: 0
-        })
-
-        nameTimeline.to(classActive, .3, {
-            visibility: 'hidden'
-        })
-    }
-
-
-    const callbackNameAnimationClose = gsap.timeline({delay: 0})
-    const callbackPhoneAnimationOpen = gsap.timeline({delay: 0})
 
     document.getElementById('callbackNextStepName').addEventListener('click', () => {
 
@@ -126,8 +33,7 @@ if (document.querySelector('.callback')) {
         }
 
         if (document.getElementById('callbackNameInput').value.length) {
-            closeCallbackWindowAnimation(callbackNameAnimationClose, '.callback__name')
-            setTimeout(() => openCallbackWindowAnimation(callbackPhoneAnimationOpen, '.callback__phone'), 2000)
+            closeCallbackWindow('.callback__name')
         }
     })
 
@@ -151,15 +57,12 @@ if (document.querySelector('.callback')) {
         }
     })
 
-    const callbackPhoneAnimationClose = gsap.timeline({delay: 0})
-    const callbackCompleteAnimationOpen = gsap.timeline({delay: 0})
-
 //countdown
     const countdownFunc = () => {
-        const countdown = {val: 5}, NewCountdown = 0;
+        const countdown = {val: 4}, NewCountdown = 0;
         const countdownTimeline = gsap.timeline()
 
-        countdownTimeline.to(countdown, 6, {
+        countdownTimeline.to(countdown, 5, {
             scrollTrigger: {trigger: '#callbackComplete'},
             val: NewCountdown,
             roundProps: "val",
@@ -183,9 +86,8 @@ if (document.querySelector('.callback')) {
         }
 
         if (document.getElementById('callbackPhoneInput').value.length) {
-            closeCallbackWindowAnimation(callbackPhoneAnimationClose, '.callback__phone')
-            setTimeout(() => openCallbackWindowAnimation(callbackCompleteAnimationOpen, '.callback__complete'), 2000)
-            setTimeout(() => countdownFunc(), 3000)
+            closeCallbackWindow('.callback__phone')
+            countdownFunc()
         }
     })
 }

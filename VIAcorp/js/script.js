@@ -56,14 +56,42 @@ const openMainMenu = document.querySelectorAll('.openMainMenu')
 for (openMenu of openMainMenu) {
     openMenu.addEventListener('click', () => {
         body.style.overflow = 'hidden'
-        openMenuAnimation.play()
+        openMenuAnimation.timeScale(1).play()
     })
 }
 
 document.getElementById('closeHeaderMenu').addEventListener('click', () => {
-    openMenuAnimation.reverse()
+    openMenuAnimation.timeScale(2).reverse()
     body.style.overflow = 'auto'
 })
+
+// menu links
+document.getElementById('linkPortfolio').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = '/?portfolio'
+})
+
+document.getElementById('linkAbout').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = '/?about'
+})
+
+window.onload = () => {
+    if (window.location.href.indexOf('portfolio') > -1) {
+        gsap.to(window, {
+            duration: 1,
+            scrollTo: document.querySelector('#mainIndexWindow').scrollWidth,
+            autoKill: false
+        });
+    }
+    if (window.location.href.indexOf('about') > -1) {
+        gsap.to(window, {
+            duration: 1,
+            scrollTo: 'max',
+            autoKill: false
+        });
+    }
+}
 
 /* index page */
 //horizontal scroll
@@ -98,6 +126,37 @@ if (document.querySelector('.index__section')) {
     }
 
 }
+
+/* pagination index page */
+let paginationLink = (btn, scrollElement) => {
+    btn.forEach(link => {
+        link.addEventListener('click', () => {
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: scrollElement,
+                autoKill: false
+            });
+        })
+    })
+}
+
+if (document.querySelector('.index__container')) {
+
+//circle
+    paginationLink(document.querySelectorAll('.index__paginationCircleMain'), 'min')
+    paginationLink(document.querySelectorAll('.index__paginationCirclePortfolio'), document.querySelector('#mainIndexWindow').scrollWidth)
+    paginationLink(document.querySelectorAll('.index__paginationCircleAbout'), 'max')
+//arrow main window
+    paginationLink(document.querySelectorAll('.index__paginationArrowMainRight'), document.querySelector('#mainIndexWindow').scrollWidth)
+//arrow about
+    paginationLink(document.querySelectorAll('.index__paginationArrowAboutLeft'), document.querySelector('#mainIndexWindow').scrollWidth)
+//arrow portfolio
+    paginationLink(document.querySelectorAll('.index__paginationArrowPortfolioLeft'), 'min')
+    paginationLink(document.querySelectorAll('.index__paginationArrowPortfolioRight'), 'max')
+
+}
+
+
 
 /* main window */
 if (document.getElementById('mainIndexWindow')) {
@@ -318,27 +377,6 @@ if (document.querySelector('.portfolio__backgroundItem')) {
 }
 
 /* callback page */
-// callback arrow
-
-if (document.querySelector('.callbackArrow')) {
-
-    const callbackAnimationArrow = gsap.timeline({
-        repeat: -1
-    })
-
-    callbackAnimationArrow.to('.callbackArrow', 1.5, {
-        strokeDasharray: '860px',
-        x: -10
-    })
-
-    callbackAnimationArrow.to('.callbackArrow', 1.5, {
-        delay: .5,
-        strokeDasharray: '430px',
-        x: 0
-    })
-
-}
-
 // callback form window
 if (document.querySelector('.callback')) {
 
@@ -358,83 +396,11 @@ if (document.querySelector('.callback')) {
         opacity: 1
     })
 
-
-    const openCallbackWindowAnimation = (nameTimeline, classActive) => {
-        nameTimeline.to(classActive, .3, {
-            visibility: 'visible'
-        })
-
-        nameTimeline.to(classActive, 1, {
-            opacity: 1,
-            width: '10%'
-        })
-
-        nameTimeline.to(classActive, 1, {
-            width: '100%',
-            height: '100%',
-            padding: '200px 10px 10px'
-        })
-
-        nameTimeline.to(`${classActive} h2`, .3, {
-            opacity: 1
-        }, '-=.6')
-
-        nameTimeline.to(`${classActive} input`, .3, {
-            opacity: 1
-        }, '-=.6')
-
-        nameTimeline.to(`${classActive} .callback__nextStep`, .3, {
-            opacity: 1
-        }, '-=.6')
-
-        nameTimeline.to(`${classActive} .callback__numberPage`, .3, {
-            opacity: 1
-        }, '-=.6')
-
-        nameTimeline.to(classActive, 1, {
-            border: 'none'
+    const closeCallbackWindow = (element) => {
+        gsap.to(element, .5, {
+            transform: 'translateX(100%)'
         })
     }
-    const closeCallbackWindowAnimation = (nameTimeline, classActive) => {
-        nameTimeline.to(classActive, .3, {
-            border: '2px solid #72CD04',
-        })
-
-        nameTimeline.to(classActive, 1, {
-            width: '10%',
-            height: 0,
-            padding: 0
-        })
-
-        nameTimeline.to(`${classActive} h2`, .3, {
-            opacity: 0
-        }, '-=1.1')
-
-        nameTimeline.to(`${classActive} input`, .3, {
-            opacity: 0
-        }, '-=1.1')
-
-        nameTimeline.to(`${classActive} .callback__nextStep`, .3, {
-            opacity: 0
-        }, '-=1.1')
-
-        nameTimeline.to(`${classActive} .callback__numberPage`, .3, {
-            opacity: 0
-        }, '-=1.1')
-
-        nameTimeline.to(classActive, 1, {
-            opacity: 0,
-            width: 0
-        })
-
-        nameTimeline.to(classActive, .3, {
-            visibility: 'hidden'
-        })
-    }
-
-
-    const callbackNameAnimationClose = gsap.timeline({delay: 0})
-    const callbackPhoneAnimationOpen = gsap.timeline({delay: 0})
 
     document.getElementById('callbackNextStepName').addEventListener('click', () => {
 
@@ -446,8 +412,7 @@ if (document.querySelector('.callback')) {
         }
 
         if (document.getElementById('callbackNameInput').value.length) {
-            closeCallbackWindowAnimation(callbackNameAnimationClose, '.callback__name')
-            setTimeout(() => openCallbackWindowAnimation(callbackPhoneAnimationOpen, '.callback__phone'), 2000)
+            closeCallbackWindow('.callback__name')
         }
     })
 
@@ -471,15 +436,12 @@ if (document.querySelector('.callback')) {
         }
     })
 
-    const callbackPhoneAnimationClose = gsap.timeline({delay: 0})
-    const callbackCompleteAnimationOpen = gsap.timeline({delay: 0})
-
 //countdown
     const countdownFunc = () => {
-        const countdown = {val: 5}, NewCountdown = 0;
+        const countdown = {val: 4}, NewCountdown = 0;
         const countdownTimeline = gsap.timeline()
 
-        countdownTimeline.to(countdown, 6, {
+        countdownTimeline.to(countdown, 5, {
             scrollTrigger: {trigger: '#callbackComplete'},
             val: NewCountdown,
             roundProps: "val",
@@ -503,16 +465,14 @@ if (document.querySelector('.callback')) {
         }
 
         if (document.getElementById('callbackPhoneInput').value.length) {
-            closeCallbackWindowAnimation(callbackPhoneAnimationClose, '.callback__phone')
-            setTimeout(() => openCallbackWindowAnimation(callbackCompleteAnimationOpen, '.callback__complete'), 2000)
-            setTimeout(() => countdownFunc(), 3000)
+            closeCallbackWindow('.callback__phone')
+            countdownFunc()
         }
     })
 }
 
 /* contacts page */
 if (document.querySelector('.contacts')) {
-
     //ticker
     gsap.set('.contacts__ticker', {xPercent: -50})
 
@@ -530,7 +490,45 @@ if (document.querySelector('.contacts')) {
         repeat: -1,
     })
 
+    //map
+    DG.then(function () {
+        map = DG.map('map', {
+            center: [54.6265672097642, 39.74219261608884],
+            zoom: 17
+        });
+        let myIcon = DG.icon({
+            iconUrl: 'img/mapIcon.png',
+            iconSize: [20, 30]
+        });
+        DG.marker([54.6265672097642, 39.74219261608884], {icon: myIcon}).addTo(map)
+    })
 
+    //animation open
+
+    const contactsAnimation = gsap.timeline()
+
+    if (window.innerWidth > 900) {
+
+        contactsAnimation.to('.contacts__map', .5, {
+            height: '100%',
+            opacity: 1
+        }, 0)
+
+        contactsAnimation.to('.contacts__anim', .5, {
+            transform: 'translateY(0)',
+            opacity: 1,
+            stagger: .3
+        })
+
+        contactsAnimation.to('.contacts__infoForm', .5, {
+            width: '90%',
+            opacity: 1
+        })
+
+        contactsAnimation.to('.contacts__ticker', .5, {
+            opacity: 1
+        })
+    }
 }
 
 

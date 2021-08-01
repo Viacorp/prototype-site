@@ -14,6 +14,11 @@
   @include size(180px, auto);
   @include flex(row, space-between, center, nowrap);
   filter: grayscale(0%) !important;
+
+  button {
+    background: none;
+    border: none;
+  }
 }
 
 .index__paginationArrow {

@@ -55,11 +55,39 @@ const openMainMenu = document.querySelectorAll('.openMainMenu')
 for (openMenu of openMainMenu) {
     openMenu.addEventListener('click', () => {
         body.style.overflow = 'hidden'
-        openMenuAnimation.play()
+        openMenuAnimation.timeScale(1).play()
     })
 }
 
 document.getElementById('closeHeaderMenu').addEventListener('click', () => {
-    openMenuAnimation.reverse()
+    openMenuAnimation.timeScale(2).reverse()
     body.style.overflow = 'auto'
 })
+
+// menu links
+document.getElementById('linkPortfolio').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = '/?portfolio'
+})
+
+document.getElementById('linkAbout').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = '/?about'
+})
+
+window.onload = () => {
+    if (window.location.href.indexOf('portfolio') > -1) {
+        gsap.to(window, {
+            duration: 1,
+            scrollTo: document.querySelector('#mainIndexWindow').scrollWidth,
+            autoKill: false
+        });
+    }
+    if (window.location.href.indexOf('about') > -1) {
+        gsap.to(window, {
+            duration: 1,
+            scrollTo: 'max',
+            autoKill: false
+        });
+    }
+}

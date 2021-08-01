@@ -3,26 +3,11 @@
 .callback {
   @include size(100vw, 100vh);
   overflow: hidden;
-  background: $black_1;
   position: relative;
 
   form {
     @include size(100%, 100%);
-
-    svg {
-      @include size(68px, 53px);
-      stroke-dasharray: 430;
-      stroke-dashoffset: 430;
-      margin-left: 10px;
-    }
   }
-}
-
-.callbackArrow {
-  stroke-dasharray: 430;
-  transform-origin: 0 0;
-  opacity: 1;
-  stroke: #fff;
 }
 
 .callback__nextStep {
@@ -38,27 +23,54 @@
   font-family: Montserrat, sans-serif;
   transition: .3s;
   cursor: pointer;
-
-  opacity: 0;
+  padding-right: 50px;
 
   &:hover {
     color: $green-1;
     text-shadow: 0 0 5px $green_1;
 
-    .callbackArrow {
+    svg {
       stroke: $green_1;
       filter: drop-shadow( 0 0 5px $green_1);
     }
   }
+
+  svg {
+    @include size(20px, 50px);
+    stroke: #fff;
+    transition: .5s;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    transform: translate(-20px ,11px);
+
+    &:nth-of-type(2) {
+      animation: 1s linear 1s infinite alternate callbackArrow2;
+    }
+
+    &:nth-of-type(3) {
+      animation: 1s linear 1s infinite alternate callbackArrow3;
+    }
+  }
 }
+
+@keyframes callbackArrow2 {
+  0% {transform: translateX(-20) translateY(11px) ;}
+  100% {transform: translateX(-13px) translateY(11px);}
+}
+
+@keyframes callbackArrow3 {
+  0% {transform: translateX(-20) translateY(11px);}
+  100% {transform: translateX(-6px) translateY(11px);}
+}
+
 
 .callback__numberPage {
   position: absolute;
   bottom: 30px;
   left: 30px;
   width: 45px;
-
-  opacity: 0;
 
   &:before {
     content: '';
@@ -92,11 +104,10 @@
 }
 
 .callback__box {
-  @include size(0%, 0%);
+  @include size(100%, 100%);
   @include flex(column, flex-start, center, nowrap);
   background: $backgroundSite;
-  //padding: 200px 10px 10px;
-  padding: 0;
+  padding: 200px 10px 10px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -104,15 +115,9 @@
   overflow: hidden;
   text-align: center;
 
-  border: 2px solid $green_1;
-  opacity: 0;
-  visibility: hidden;
-
   h2 {
     @include adaptiveFormula(font-size, 24, 50);
     @include adaptiveFormula(margin-bottom, 60, 100);
-
-    opacity: 0;
   }
 
   input {
@@ -125,8 +130,6 @@
     padding: 5px;
     text-align: center;
 
-    opacity: 0;
-
     &:focus {
       border-color: $green_1;
     }
@@ -138,18 +141,20 @@
 }
 
 .callback__name {
-  @include size(100%, 100%);
-  padding: 200px 10px 10px;
-  opacity: 1;
-  border: none;
-  visibility: visible;
+  z-index: 7;
+
+  .callback__numberPage, .callback__nextStep {
+    opacity: 0;
+  }
 
   h2 {
     transform: translateX(-10px);
+    opacity: 0;
   }
 
   input {
     width: 0;
+    opacity: 0;
   }
 }
 
@@ -201,6 +206,8 @@
 }
 
 .callback__phone {
+  z-index: 6;
+
   input[type="text"] {
     @include adaptiveFormula(margin-top, 25, 50);
     width: 0;
@@ -221,6 +228,8 @@
 }
 
 .callback__complete {
+  z-index: 5;
+
   p {
     @include adaptiveFormula(font-size, 15, 30);
   }
