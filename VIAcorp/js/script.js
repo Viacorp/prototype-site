@@ -483,7 +483,7 @@ if (document.querySelector('.contacts')) {
 
     gsap.set('.contacts__ticker li', {x: (i) => i * tickerBoxWidth})
 
-    gsap.timeline().to('.contacts__ticker li', 20, {
+    gsap.timeline().to('.contacts__ticker li', 40, {
         x: "+=" + tickerTotalWidth,
         modifiers: {x: (x) => tickerMod(parseFloat(x)) + "px"},
         ease: 'none',

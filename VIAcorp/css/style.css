@@ -408,6 +408,10 @@ header {
   position: relative;
 }
 
+.header__rightMenu ul {
+  padding-left: 20px;
+}
+
 .header__line {
   display: block;
   width: 10px;
@@ -1257,8 +1261,8 @@ header {
 }
 
 .portfolio__itemTitle h2 {
-  margin-left: -130px;
-  font-size: 70px;
+  margin-left: calc(-90px + (-160 - -90) * ((100vw - 900px) / (1920 - 900)));
+  font-size: calc(50px + (70 - 50) * ((100vw - 900px) / (1920 - 900)));
   font-family: MontserratBold, sans-serif;
   text-transform: uppercase;
   -webkit-transform: rotate(-90deg);
@@ -2269,6 +2273,9 @@ header {
     padding: 40px 0 0 40px;
     position: relative;
   }
+  .header__rightMenu ul {
+    padding-left: 0;
+  }
   .header__rightMenu:before {
     content: '';
     width: 90%;
@@ -2392,7 +2399,7 @@ header {
         -ms-transform: none;
             transform: none;
     margin-left: 0;
-    font-size: calc(40px + (70 - 40) * ((100vw - 320px) / (900 - 320)));
+    font-size: calc(40px + (50 - 40) * ((100vw - 320px) / (900 - 320)));
   }
   .portfolio__itemTitle a, .portfolio__itemTitle div {
     display: none;

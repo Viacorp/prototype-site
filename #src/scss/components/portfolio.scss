@@ -173,8 +173,8 @@
   @include flex(column, space-between, flex-start, nowrap);
 
   h2 {
-    margin-left: -130px;
-    font-size: 70px;
+    margin-left: calc(-90px + (-160 - -90) * ((100vw - 900px) / (1920 - 900)));
+    font-size: calc(50px + (70 - 50) * ((100vw - 900px) / (1920 - 900)));
     font-family: MontserratBold, sans-serif;
     text-transform: uppercase;
     transform: rotate(-90deg);

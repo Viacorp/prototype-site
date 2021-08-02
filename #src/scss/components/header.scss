@@ -27,6 +27,8 @@ header {
 .header__rightMenu {
   transform: translateX(100%);
   position: relative;
+
+  ul {padding-left: 20px}
 }
 
 .header__line {

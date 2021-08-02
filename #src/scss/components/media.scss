@@ -17,6 +17,8 @@
     padding: 40px 0 0 40px;
     position: relative;
 
+    ul {padding-left: 0}
+
     &:before {
       content: '';
       @include size(90%, 2px);
@@ -145,7 +147,7 @@
     h2 {
       transform: none;
       margin-left: 0;
-      font-size: calc(40px + (70 - 40) * ((100vw - 320px) / (900 - 320)));
+      font-size: calc(40px + (50 - 40) * ((100vw - 320px) / (900 - 320)));
     }
 
     a, div {display: none}
